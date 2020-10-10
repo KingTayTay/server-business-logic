@@ -9,14 +9,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-express": "node -r esm src/web/express/index.js",
     "start-hapi": "node -r esm src/web/hapi/index.js",
-    "start-fastify": "node -r esm src/web/fastify/index.js"
+    "start-fastify": "node -r esm src/web/fastify/index.js",
+    "start-gql": "node -r esm src/web/graphql/index.js"
   },
   "main": "index.js",
   "module": "src/web/express/index.js",
   "dependencies": {
     "@hapi/hapi": "^19.1.1",
+    "apollo-server": "^2.18.2",
     "esm": "^3.2.25",
     "express": "^4.17.1",
-    "fastify": "^3.5.1"
+    "fastify": "^3.5.1",
+    "graphql": "^15.3.0"
   }
 }

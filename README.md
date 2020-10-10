@@ -7,6 +7,7 @@ An example project to show separation of business logic from a chosen server fra
 - [x] Express
 - [x] Hapi
 - [x] Fastify
+- [x] GraphQL
 
 ## Running
 
@@ -18,6 +19,8 @@ yarn start-express
 yarn start-hapi
 # For Fastify
 yarn start-fastify
+# For GraphQL
+yarn start-gql
 ```
 
 ## About This Project

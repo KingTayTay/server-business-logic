@@ -1,13 +1,8 @@
 import { ApolloServer, gql } from "apollo-server";
 import Books from "../../lib/books";
+import createDbClient from "../../lib/dbClient";
 
-const ALL_BOOKS = [
-  { id: "001", title: "Example Book 1", author: "Example Author" },
-  { id: "002", title: "Example Book 2", author: "Example Author" },
-];
-const dbClient = {
-  query: () => Promise.resolve(ALL_BOOKS),
-};
+const dbClient = createDbClient();
 const books = Books({ dbClient });
 
 const typeDefs = gql`

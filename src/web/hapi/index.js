@@ -2,8 +2,7 @@
 
 import Hapi from "@hapi/hapi";
 import Books from "../../lib/books";
-
-const ALL_BOOKS = [{ id: "001", title: "Example Book 1" }];
+import createDbClient from "../../lib/dbClient";
 
 const init = async () => {
   const server = Hapi.server({
@@ -11,9 +10,7 @@ const init = async () => {
     host: "localhost",
   });
 
-  const dbClient = {
-    query: () => Promise.resolve(ALL_BOOKS),
-  };
+  const dbClient = createDbClient();
   const books = Books({ dbClient });
 
   server.route({

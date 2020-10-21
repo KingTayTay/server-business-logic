@@ -1,14 +1,10 @@
 import express from "express";
 import Books from "../../lib/books";
+import createDbClient from "../../lib/dbClient";
 
-const ALL_BOOKS = [{ id: "001", title: "Example Book 1" }];
-
-const app = express();
-
-const dbClient = {
-  query: () => Promise.resolve(ALL_BOOKS),
-};
+const dbClient = createDbClient();
 const books = Books({ dbClient });
+const app = express();
 
 /**
  * Get All Books

@@ -1,17 +1,24 @@
 "use strict";
 
 import Hapi from "@hapi/hapi";
+import hapiPino from "hapi-pino";
+import { options } from "../../lib/logger";
 import Books from "../../lib/books";
 import createDbClient from "../../lib/dbClient";
 
 const init = async () => {
+  const dbClient = createDbClient();
+  const books = Books({ dbClient });
+
   const server = Hapi.server({
     port: 3000,
     host: "localhost",
   });
 
-  const dbClient = createDbClient();
-  const books = Books({ dbClient });
+  await server.register({
+    plugin: hapiPino,
+    options,
+  });
 
   server.route({
     method: "GET",

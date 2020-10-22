@@ -1,11 +1,12 @@
 import fastify from "fastify";
+import logger from "../../lib/logger";
 import Books from "../../lib/books";
 import createDbClient from "../../lib/dbClient";
 
 const dbClient = createDbClient();
 const books = Books({ dbClient });
 
-const app = fastify({ logger: true });
+const app = fastify({ logger });
 
 app.get("/books", async (request, reply) => {
   const allBooks = await books.getBooks();

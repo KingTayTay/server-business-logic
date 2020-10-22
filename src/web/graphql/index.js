@@ -1,9 +1,22 @@
 import { ApolloServer, gql } from "apollo-server";
+import logger from "../../lib/logger";
 import Books from "../../lib/books";
 import createDbClient from "../../lib/dbClient";
 
 const dbClient = createDbClient();
 const books = Books({ dbClient });
+
+const pinoPlugin = {
+  requestDidStart(requestContext) {
+    logger.info({ data: requestContext }, "requestDidStart");
+
+    return {
+      parsingDidStart(requestContext) {},
+
+      validationDidStart(requestContext) {},
+    };
+  },
+};
 
 const typeDefs = gql`
   type Book {
@@ -23,8 +36,8 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, plugins: [pinoPlugin] });
 
 server.listen().then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
+  logger.info(`🚀  Server ready at ${url}`);
 });

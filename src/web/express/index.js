@@ -1,10 +1,14 @@
 import express from "express";
+import pinoExpress from "express-pino-logger";
+import logger from "../../lib/logger";
 import Books from "../../lib/books";
 import createDbClient from "../../lib/dbClient";
 
+const pinoMiddleware = pinoExpress({ logger });
 const dbClient = createDbClient();
 const books = Books({ dbClient });
 const app = express();
+app.use(pinoMiddleware);
 
 /**
  * Get All Books

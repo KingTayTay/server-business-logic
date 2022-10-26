@@ -7,14 +7,8 @@ const dbClient = createDbClient();
 const books = Books({ dbClient });
 
 const pinoPlugin = {
-  requestDidStart(requestContext) {
+  async requestDidStart(requestContext) {
     logger.info({ data: requestContext }, "requestDidStart");
-
-    return {
-      parsingDidStart(requestContext) {},
-
-      validationDidStart(requestContext) {},
-    };
   },
 };
 

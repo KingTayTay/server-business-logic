@@ -5,29 +5,37 @@
   "author": "Tyler Wilson (me@tylerwilson.dev)",
   "license": "UNLICENSED",
   "private": true,
+  "type": "module",
+  "exports": "./dist/web/express/index.js",
+  "main": "/dist/web/express/index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-express": "node -r esm src/web/express/index.js",
-    "start-hapi": "node -r esm src/web/hapi/index.js",
-    "start-fastify": "node -r esm src/web/fastify/index.js",
-    "start-gql": "node -r esm src/web/graphql/index.js",
-    "stylecheck": "prettier -c . && eslint --format codeframe ."
+    "start-express": "node dist/web/express/index.js",
+    "start-hapi": "node dist/web/hapi/index.js",
+    "start-fastify": "node dist/web/fastify/index.js",
+    "start-gql": "node dist/web/graphql/index.js",
+    "stylecheck": "prettier -c . && eslint --format codeframe .",
+    "typecheck": "tsc --noEmit"
   },
-  "main": "index.js",
-  "module": "src/web/express/index.js",
   "dependencies": {
-    "@hapi/hapi": "^19.1.1",
+    "@hapi/hapi": "^20.2.2",
     "apollo-server": "^3.10.3",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "express-pino-logger": "^5.0.0",
     "fastify": "^3.5.1",
     "graphql": "^15.3.0",
-    "hapi-pino": "^8.3.0",
+    "hapi-pino": "^11.0.1",
     "pino": "^6.7.0",
     "pino-pretty": "^4.3.0"
   },
   "devDependencies": {
+    "@types/express-pino-logger": "^4.0.3",
+    "@types/hapi-pino": "^8.0.0",
+    "@types/hapi__hapi": "^20.0.13",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.14.0",
     "eslint-config-standard": "^14.1.1",
@@ -35,6 +43,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.2",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4"
   }
 }

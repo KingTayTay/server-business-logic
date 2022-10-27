@@ -1,8 +1,8 @@
 import express from "express";
 import pinoExpress from "express-pino-logger";
-import logger from "../../lib/logger";
-import Books from "../../lib/books";
-import createDbClient from "../../lib/dbClient";
+import logger from "../../lib/logger.js";
+import Books from "../../lib/books.js";
+import createDbClient from "../../lib/dbClient.js";
 
 const pinoMiddleware = pinoExpress({ logger });
 const dbClient = createDbClient();

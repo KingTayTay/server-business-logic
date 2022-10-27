@@ -2,9 +2,9 @@
 
 import Hapi from "@hapi/hapi";
 import hapiPino from "hapi-pino";
-import { options } from "../../lib/logger";
-import Books from "../../lib/books";
-import createDbClient from "../../lib/dbClient";
+import { options } from "../../lib/logger.js";
+import Books from "../../lib/books.js";
+import createDbClient from "../../lib/dbClient.js";
 
 const init = async () => {
   const dbClient = createDbClient();

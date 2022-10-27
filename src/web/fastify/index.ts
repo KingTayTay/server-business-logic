@@ -1,7 +1,7 @@
-import fastify from "fastify";
-import logger from "../../lib/logger";
-import Books from "../../lib/books";
-import createDbClient from "../../lib/dbClient";
+import { fastify } from "fastify";
+import logger from "../../lib/logger.js";
+import Books from "../../lib/books.js";
+import createDbClient from "../../lib/dbClient.js";
 
 const dbClient = createDbClient();
 const books = Books({ dbClient });
